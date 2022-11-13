@@ -2,7 +2,7 @@ const canvas = document.getElementById("canvas1");
 const ctx = canvas.getContext("2d");
 const CANVAS_WIDTH = (canvas.width = 800);
 const CANVAS_HEIGHT = (canvas.height = 700);
-let gameSpeed = 5;
+let gameSpeed = 15;
 
 const backgroundLayer1 = new Image();
 backgroundLayer1.src = "images/layer-1.png";
@@ -15,8 +15,12 @@ backgroundLayer4.src = "images/layer-4.png";
 const backgroundLayer5 = new Image();
 backgroundLayer5.src = "images/layer-5.png";
 
+let x = 0;
+
 function animate() {
-  ctx.drawImage(backgroundLayer5, 0, 0);
+  ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+  ctx.drawImage(backgroundLayer4, x, 0);
+  x -= gameSpeed;
   requestAnimationFrame(animate);
 }
 animate();
